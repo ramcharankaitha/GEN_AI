@@ -1,0 +1,481 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "vwAmgYo6gT4L",
+        "outputId": "b1987093-f8e6-4712-cccf-1dcde67a5249"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m52.0/52.0 kB\u001b[0m \u001b[31m2.0 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m23.3/23.3 MB\u001b[0m \u001b[31m55.2 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m278.2/278.2 kB\u001b[0m \u001b[31m18.1 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m4.6/4.6 MB\u001b[0m \u001b[31m89.8 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m23.6/23.6 MB\u001b[0m \u001b[31m62.4 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m72.5/72.5 kB\u001b[0m \u001b[31m4.8 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m140.1/140.1 kB\u001b[0m \u001b[31m8.2 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m60.0/60.0 kB\u001b[0m \u001b[31m3.9 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m206.3/206.3 kB\u001b[0m \u001b[31m14.5 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m95.7/95.7 kB\u001b[0m \u001b[31m7.2 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m69.4/69.4 kB\u001b[0m \u001b[31m5.3 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m60.6/60.6 kB\u001b[0m \u001b[31m4.5 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[?25h\u001b[31mERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n",
+            "google-adk 2.7.1 requires opentelemetry-api<=1.42.1,>=1.39, but you have opentelemetry-api 1.45.0 which is incompatible.\n",
+            "google-adk 2.7.1 requires opentelemetry-sdk<=1.42.1,>=1.39, but you have opentelemetry-sdk 1.45.0 which is incompatible.\u001b[0m\u001b[31m\n",
+            "\u001b[0m"
+          ]
+        }
+      ],
+      "source": [
+        "# Install ChromaDB\n",
+        "!pip install -q chromadb"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import chromadb\n",
+        "\n",
+        "# Create ChromaDB client\n",
+        "client = chromadb.Client()\n",
+        "\n",
+        "# Create collection\n",
+        "collection = client.create_collection(name=\"travel_demo\")\n",
+        "\n",
+        "print(\"Collection created:\", collection.name)\n",
+        "print(\"Current document count:\", collection.count())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "HSCb4YkyhZxD",
+        "outputId": "641225b0-70f3-40b2-bdd7-9836be45a804"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Collection created: travel_demo\n",
+            "Current document count: 0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "collection.add(\n",
+        "    documents=[\n",
+        "        \"Paris is famous for the Eiffel Tower and beautiful museums.\",\n",
+        "        \"The Maldives is known for clear blue water and tropical beaches.\",\n",
+        "        \"Tokyo combines modern technology with traditional Japanese culture.\",\n",
+        "        \"Switzerland is popular for its mountains, lakes, and scenic trains.\",\n",
+        "        \"Dubai is known for luxury shopping, skyscrapers, and desert adventures.\"\n",
+        "    ],\n",
+        "\n",
+        "    metadatas=[\n",
+        "        {\"category\": \"city\"},\n",
+        "        {\"category\": \"beach\"},\n",
+        "        {\"category\": \"city\"},\n",
+        "        {\"category\": \"nature\"},\n",
+        "        {\"category\": \"city\"}\n",
+        "    ],\n",
+        "\n",
+        "    ids=[\n",
+        "        \"trip1\",\n",
+        "        \"trip2\",\n",
+        "        \"trip3\",\n",
+        "        \"trip4\",\n",
+        "        \"trip5\"\n",
+        "    ]\n",
+        ")\n",
+        "\n",
+        "print(\"Documents added!\")\n",
+        "print(\"Total count:\", collection.count())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "elwmA_Xhhjdw",
+        "outputId": "205cc271-207c-40c5-b581-070acba112c6"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "/root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx.tar.gz: 100%|██████████| 79.3M/79.3M [00:00<00:00, 86.2MiB/s]\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Documents added!\n",
+            "Total count: 5\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "preview = collection.peek(limit=3)\n",
+        "\n",
+        "for doc_id, doc in zip(\n",
+        "    preview[\"ids\"],\n",
+        "    preview[\"documents\"]\n",
+        "):\n",
+        "    print(doc_id, \"->\", doc)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zE4YgVEwhvLu",
+        "outputId": "adcd14b5-1d97-4d0a-f7c0-92794149f7e1"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "trip1 -> Paris is famous for the Eiffel Tower and beautiful museums.\n",
+            "trip2 -> The Maldives is known for clear blue water and tropical beaches.\n",
+            "trip3 -> Tokyo combines modern technology with traditional Japanese culture.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "result = collection.get(\n",
+        "    ids=[\"trip1\", \"trip3\"]\n",
+        ")\n",
+        "\n",
+        "for doc_id, doc, meta in zip(\n",
+        "    result[\"ids\"],\n",
+        "    result[\"documents\"],\n",
+        "    result[\"metadatas\"]\n",
+        "):\n",
+        "    print(f\"{doc_id} | {meta} | {doc}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Sc6RxITQhy7y",
+        "outputId": "0c5a46c0-10e0-4bf0-88b1-56932f819c3c"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "trip1 | {'category': 'city'} | Paris is famous for the Eiffel Tower and beautiful museums.\n",
+            "trip3 | {'category': 'city'} | Tokyo combines modern technology with traditional Japanese culture.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "results = collection.query(\n",
+        "    query_texts=[\n",
+        "        \"places with famous landmarks and culture\"\n",
+        "    ],\n",
+        "    n_results=2\n",
+        ")\n",
+        "\n",
+        "for doc_id, doc, distance in zip(\n",
+        "    results[\"ids\"][0],\n",
+        "    results[\"documents\"][0],\n",
+        "    results[\"distances\"][0]\n",
+        "):\n",
+        "    print(\n",
+        "        f\"{doc_id} | distance={distance:.4f} | {doc}\"\n",
+        "    )"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tKdxjONfh1aE",
+        "outputId": "2b293841-8aa7-4b40-fdc4-054f5bb7a385"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "trip1 | distance=1.0685 | Paris is famous for the Eiffel Tower and beautiful museums.\n",
+            "trip4 | distance=1.1675 | Switzerland is popular for its mountains, lakes, and scenic trains.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "results = collection.query(\n",
+        "    query_texts=[\n",
+        "        \"a relaxing destination with water and beaches\"\n",
+        "    ],\n",
+        "    n_results=3,\n",
+        "    where={\"category\": \"beach\"}\n",
+        ")\n",
+        "\n",
+        "for doc_id, doc, distance in zip(\n",
+        "    results[\"ids\"][0],\n",
+        "    results[\"documents\"][0],\n",
+        "    results[\"distances\"][0]\n",
+        "):\n",
+        "    print(\n",
+        "        f\"{doc_id} | distance={distance:.4f} | {doc}\"\n",
+        "    )"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "eA0BaiGth5SW",
+        "outputId": "a244de7a-8e7e-4763-db25-f9b0e4ea4584"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "trip2 | distance=0.9887 | The Maldives is known for clear blue water and tropical beaches.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "collection.update(\n",
+        "    ids=[\"trip4\"],\n",
+        "\n",
+        "    documents=[\n",
+        "        \"Switzerland is popular for its mountains, lakes, scenic trains, and hiking trails.\"\n",
+        "    ],\n",
+        "\n",
+        "    metadatas=[\n",
+        "        {\n",
+        "            \"category\": \"nature\",\n",
+        "            \"updated\": True\n",
+        "        }\n",
+        "    ]\n",
+        ")\n",
+        "\n",
+        "updated = collection.get(ids=[\"trip4\"])\n",
+        "\n",
+        "print(updated[\"documents\"])\n",
+        "print(updated[\"metadatas\"])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "PPrwgfbDh8_6",
+        "outputId": "640201dd-686b-46fa-f46c-6e0de8cc0dae"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Switzerland is popular for its mountains, lakes, scenic trains, and hiking trails.']\n",
+            "[{'updated': True, 'category': 'nature'}]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "collection.upsert(\n",
+        "    documents=[\n",
+        "        \"Tokyo combines modern technology, traditional temples, and Japanese culture.\",\n",
+        "        \"New Zealand is famous for dramatic landscapes and outdoor adventures.\"\n",
+        "    ],\n",
+        "\n",
+        "    ids=[\n",
+        "        \"trip3\",\n",
+        "        \"trip6\"\n",
+        "    ]\n",
+        ")\n",
+        "\n",
+        "print(\"Total count after upsert:\", collection.count())\n",
+        "\n",
+        "print(\n",
+        "    collection.get(\n",
+        "        ids=[\"trip3\", \"trip6\"]\n",
+        "    )[\"documents\"]\n",
+        ")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "eXQlXohyh_WG",
+        "outputId": "089d5051-f768-41a5-80de-0cbebf46efc6"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Total count after upsert: 6\n",
+            "['Tokyo combines modern technology, traditional temples, and Japanese culture.', 'New Zealand is famous for dramatic landscapes and outdoor adventures.']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "collection.delete(\n",
+        "    ids=[\"trip2\"]\n",
+        ")\n",
+        "\n",
+        "print(\n",
+        "    \"Total count after delete:\",\n",
+        "    collection.count()\n",
+        ")\n",
+        "\n",
+        "print(\n",
+        "    \"Remaining ids:\",\n",
+        "    collection.get()[\"ids\"]\n",
+        ")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1u33_BkgiAqk",
+        "outputId": "ad5e4dac-4fa7-4c9e-8a3c-d24717590a15"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Total count after delete: 5\n",
+            "Remaining ids: ['trip1', 'trip3', 'trip4', 'trip5', 'trip6']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "collection.delete(\n",
+        "    where={\"category\": \"city\"}\n",
+        ")\n",
+        "\n",
+        "print(\n",
+        "    \"Total count after category delete:\",\n",
+        "    collection.count()\n",
+        ")\n",
+        "\n",
+        "print(\n",
+        "    \"Remaining ids:\",\n",
+        "    collection.get()[\"ids\"]\n",
+        ")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2ciz-ZRSiFPG",
+        "outputId": "9db4c9b9-6889-4773-dc8d-0bd289be5bea"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Total count after category delete: 2\n",
+            "Remaining ids: ['trip4', 'trip6']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "final_state = collection.get()\n",
+        "\n",
+        "print(\n",
+        "    \"Final document count:\",\n",
+        "    collection.count()\n",
+        ")\n",
+        "\n",
+        "for doc_id, doc, meta in zip(\n",
+        "    final_state[\"ids\"],\n",
+        "    final_state[\"documents\"],\n",
+        "    final_state[\"metadatas\"]\n",
+        "):\n",
+        "    print(f\"{doc_id} | {meta} | {doc}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-3hbJ04_iH6c",
+        "outputId": "20851cf0-1b9b-4e9a-90d7-f2ec70ee5675"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Final document count: 2\n",
+            "trip4 | {'category': 'nature', 'updated': True} | Switzerland is popular for its mountains, lakes, scenic trains, and hiking trails.\n",
+            "trip6 | None | New Zealand is famous for dramatic landscapes and outdoor adventures.\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
